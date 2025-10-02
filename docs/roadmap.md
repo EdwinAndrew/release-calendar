@@ -6,10 +6,10 @@
 
 ---
 
-## Phase 1: Java Fundamentals (MOOC Part 1-2, Weeks 1-7)
+## Phase 1: Java Fundamentals 
 **Focus: Core Java concepts before Spring**
 
-### Milestone 1.1: Domain Models (Week 1-2)
+### Milestone 1.1: Domain Models 
 **Status:** ✅ Complete
 **Goal:** Create the core business objects
 
@@ -25,8 +25,8 @@
 
 ---
 
-### Milestone 1.2: Collections & Data Management (Week 3-4)
-**Status:** 🚧In Progress
+### Milestone 1.2: Collections & Data Management 
+**Status:**  ✅ Complete 
 
 **Goal:** Manage collections of releases and milestones in memory
 
@@ -35,7 +35,7 @@
 - [x] Implement methods: addRelease(), getRelease(), getAllReleases(), updateRelease(), deleteRelease()
 - [x] Create `MilestoneManager` class with similar CRUD methods
 - [x] Link milestones to their parent releases
-- [ ] Handle edge cases (duplicate IDs, null values, etc.)
+- [x] Handle edge cases (duplicate IDs, null values, etc.)
 
 **Skills Practiced:** ArrayList, iteration, searching, CRUD operations
 
@@ -43,8 +43,8 @@
 
 ---
 
-### Milestone 1.3: Console Application (Week 5-7)
-**Status:** 🔲 Not Started
+### Milestone 1.3: Console Application 
+**Status:** 🚧In Progress
 
 **Goal:** Build a text-based user interface
 
@@ -62,10 +62,10 @@
 
 ---
 
-## Phase 2: Spring Boot Basics (Post-MOOC Part 1, Week 8-10)
+## Phase 2: Spring Boot Basics 
 **Focus: Transition to web framework**
 
-### Milestone 2.1: Spring Boot Setup (Week 8)
+### Milestone 2.1: Spring Boot Setup 
 **Status:** 🔲 Not Started
 
 **Goal:** Set up Spring Boot project structure
@@ -85,7 +85,7 @@
 
 ---
 
-### Milestone 2.2: REST API - First Endpoints (Week 9)
+### Milestone 2.2: REST API - First Endpoints 
 **Status:** 🔲 Not Started
 
 **Goal:** Create REST endpoints for releases
@@ -109,7 +109,7 @@
 
 ---
 
-### Milestone 2.3: Milestone Endpoints (Week 10)
+### Milestone 2.3: Milestone Endpoints 
 **Status:** 🔲 Not Started
 
 **Goal:** Add REST endpoints for milestones
@@ -128,10 +128,10 @@
 
 ---
 
-## Phase 3: Database Integration (Week 11-14)
+## Phase 3: Database Integration 
 **Focus: Persistent storage with JPA**
 
-### Milestone 3.1: Database Setup (Week 11)
+### Milestone 3.1: Database Setup
 **Status:** 🔲 Not Started
 
 **Goal:** Add database persistence
@@ -150,7 +150,7 @@
 
 ---
 
-### Milestone 3.2: Repositories (Week 12)
+### Milestone 3.2: Repositories 
 **Status:** 🔲 Not Started
 
 **Goal:** Replace in-memory storage with database repositories
@@ -168,7 +168,7 @@
 
 ---
 
-### Milestone 3.3: Service Layer (Week 13)
+### Milestone 3.3: Service Layer
 **Status:** 🔲 Not Started
 
 **Goal:** Add proper layering and business logic
@@ -187,7 +187,7 @@
 
 ---
 
-### Milestone 3.4: Relationships (Week 14)
+### Milestone 3.4: Relationships
 **Status:** 🔲 Not Started
 
 **Goal:** Implement JPA relationships
@@ -206,10 +206,10 @@
 
 ---
 
-## Phase 4: Web UI - Admin Interface (Week 15-18)
+## Phase 4: Web UI - Admin Interface 
 **Focus: Server-side rendering with Thymeleaf**
 
-### Milestone 4.1: Thymeleaf Setup (Week 15)
+### Milestone 4.1: Thymeleaf Setup
 **Status:** 🔲 Not Started
 
 **Goal:** Add web page rendering
@@ -228,7 +228,7 @@
 
 ---
 
-### Milestone 4.2: Release Management Pages (Week 16)
+### Milestone 4.2: Release Management Pages 
 **Status:** 🔲 Not Started
 
 **Goal:** Full CRUD web interface for releases
@@ -248,7 +248,7 @@
 
 ---
 
-### Milestone 4.3: Milestone Management (Week 17)
+### Milestone 4.3: Milestone Management 
 **Status:** 🔲 Not Started
 
 **Goal:** Web interface for milestones
@@ -267,7 +267,7 @@
 
 ---
 
-### Milestone 4.4: Validation & Error Handling (Week 18)
+### Milestone 4.4: Validation & Error Handling 
 **Status:** 🔲 Not Started
 
 **Goal:** Robust validation and user feedback
@@ -286,10 +286,10 @@
 
 ---
 
-## Phase 5: Calendar & Gantt View (Week 19-21)
+## Phase 5: Calendar & Gantt View 
 **Focus: Visualization of timeline data**
 
-### Milestone 5.1: List View Enhancements (Week 19)
+### Milestone 5.1: List View Enhancements 
 **Status:** 🔲 Not Started
 
 **Goal:** Improved calendar-style display
@@ -308,7 +308,7 @@
 
 ---
 
-### Milestone 5.2: Gantt Chart Integration (Week 20-21)
+### Milestone 5.2: Gantt Chart Integration 
 **Status:** 🔲 Not Started
 
 **Goal:** Timeline visualization with Gantt chart
@@ -328,10 +328,10 @@
 
 ---
 
-## Phase 6: Security & User Management (Week 22-25)
+## Phase 6: Security & User Management 
 **Focus: Authentication and authorization**
 
-### Milestone 6.1: Spring Security Setup (Week 22)
+### Milestone 6.1: Spring Security Setup 
 **Status:** 🔲 Not Started
 
 **Goal:** Add authentication
@@ -350,7 +350,7 @@
 
 ---
 
-### Milestone 6.2: User Roles (Week 23)
+### Milestone 6.2: User Roles 
 **Status:** 🔲 Not Started
 
 **Goal:** Role-based access control
@@ -370,7 +370,7 @@
 
 ---
 
-### Milestone 6.3: Registration & User Management (Week 24-25)
+### Milestone 6.3: Registration & User Management 
 **Status:** 🔲 Not Started
 
 **Goal:** Complete user management system
@@ -389,10 +389,10 @@
 
 ---
 
-## Phase 7: Notifications & Automation (Week 26-29)
+## Phase 7: Notifications & Automation 
 **Focus: Slack integration and scheduled tasks**
 
-### Milestone 7.1: Slack Webhook Setup (Week 26)
+### Milestone 7.1: Slack Webhook Setup
 **Status:** 🔲 Not Started
 
 **Goal:** Send messages to Slack
@@ -411,7 +411,7 @@
 
 ---
 
-### Milestone 7.2: Notification Logic (Week 27)
+### Milestone 7.2: Notification Logic 
 **Status:** 🔲 Not Started
 
 **Goal:** Smart notification system
@@ -430,7 +430,7 @@
 
 ---
 
-### Milestone 7.3: Scheduled Notifications (Week 28)
+### Milestone 7.3: Scheduled Notifications 
 **Status:** 🔲 Not Started
 
 **Goal:** Automatic notifications
@@ -450,7 +450,7 @@
 
 ---
 
-### Milestone 7.4: Notification Management (Week 29)
+### Milestone 7.4: Notification Management 
 **Status:** 🔲 Not Started
 
 **Goal:** Configure notification preferences
@@ -469,10 +469,10 @@
 
 ---
 
-## Phase 8: Polish & Production Ready (Week 30-32)
+## Phase 8: Polish & Production Ready 
 **Focus: Deployment and refinement**
 
-### Milestone 8.1: Switch to Production Database (Week 30)
+### Milestone 8.1: Switch to Production Database 
 **Status:** 🔲 Not Started
 
 **Goal:** Use production-grade database
@@ -492,7 +492,7 @@
 
 ---
 
-### Milestone 8.2: Error Handling & Logging (Week 31)
+### Milestone 8.2: Error Handling & Logging 
 **Status:** 🔲 Not Started
 
 **Goal:** Production-ready error handling
@@ -511,7 +511,7 @@
 
 ---
 
-### Milestone 8.3: Testing (Week 32)
+### Milestone 8.3: Testing 
 **Status:** 🔲 Not Started
 
 **Goal:** Comprehensive test coverage
@@ -530,7 +530,7 @@
 
 ---
 
-### Milestone 8.4: Deployment (Week 32)
+### Milestone 8.4: Deployment 
 **Status:** 🔲 Not Started
 
 **Goal:** Deploy to production
