@@ -29,9 +29,25 @@ public class Main {
 
         releaseManager.addRelease(release);
         releaseManager.addRelease(release2);
+        System.out.println("============");
         System.out.println(releaseManager.getAllReleases());
+        System.out.println("============");
         releaseManager.updateRelease(1,"R25.1.0", LocalDate.now().plusDays(1), LocalDate.now().plusDays(2));
         System.out.println(releaseManager.getAllReleases());
+        MilestoneManager milestoneManager = new MilestoneManager();
+        milestoneManager.addMilestone(scopeDeadline);
+        milestoneManager.addMilestone(devComplete);
+        milestoneManager.addMilestone(regressionStart);
+        milestoneManager.addMilestone(regressionEnd);
+        milestoneManager.addMilestone(codeFreeze);
+        milestoneManager.addMilestone(prodDeploy);
+
+
+
+        System.out.println("============");
+        milestoneManager.getMilestone(1);
+        milestoneManager.getMilestone(2);
+
 
 
 

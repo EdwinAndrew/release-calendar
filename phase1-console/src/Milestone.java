@@ -26,6 +26,10 @@ public class Milestone {
         return releaseId;
     }
 
+    public int getId(){
+        return id;
+    }
+
     public void updateKeyDate(LocalDate newDate){
         this.keyDate = newDate;
     }

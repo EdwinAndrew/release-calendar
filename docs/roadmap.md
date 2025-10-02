@@ -26,15 +26,15 @@
 ---
 
 ### Milestone 1.2: Collections & Data Management (Week 3-4)
-**Status:** 🔲 Not Started
+**Status:** 🚧In Progress
 
 **Goal:** Manage collections of releases and milestones in memory
 
 **Tasks:**
-- [ ] Create `ReleaseManager` class using ArrayList to store releases
-- [ ] Implement methods: addRelease(), getRelease(), getAllReleases(), updateRelease(), deleteRelease()
-- [ ] Create `MilestoneManager` class with similar CRUD methods
-- [ ] Link milestones to their parent releases
+- [x] Create `ReleaseManager` class using ArrayList to store releases
+- [x] Implement methods: addRelease(), getRelease(), getAllReleases(), updateRelease(), deleteRelease()
+- [x] Create `MilestoneManager` class with similar CRUD methods
+- [x] Link milestones to their parent releases
 - [ ] Handle edge cases (duplicate IDs, null values, etc.)
 
 **Skills Practiced:** ArrayList, iteration, searching, CRUD operations

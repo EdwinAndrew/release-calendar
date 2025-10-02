@@ -8,15 +8,27 @@ public class Release{
     private LocalDate endDate;
 
     public Release(String releaseWindow, LocalDate startDate, LocalDate endDate){
-        this.id = nextId++;
-        this.releaseWindow = releaseWindow;
+        // Validate inputs before assignment
+        if (releaseWindow == null || releaseWindow.trim().isEmpty()) {
+            throw new IllegalArgumentException("Release window cannot be null or empty!");
+        }
+
+        if (startDate == null) {
+            throw new IllegalArgumentException("Start date cannot be null!");
+        }
+
+        if (endDate == null) {
+            throw new IllegalArgumentException("End date cannot be null!");
+        }
 
         if (startDate.isAfter(endDate)){
             throw new IllegalArgumentException("Start date must be before or equal to end date!");
-        }else{
-            this.startDate = startDate;
-            this.endDate = endDate;
         }
+
+        this.id = nextId++;
+        this.releaseWindow = releaseWindow;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public int getId(){
