@@ -35,6 +35,19 @@ public class Release{
         return endDate;
     }
 
+    public void setReleaseWindow(String newName){
+        this.releaseWindow = newName;
+    }
+
+    public void setStartDate(LocalDate newStart){
+        this.startDate = newStart;
+    }
+
+    public void setEndDate(LocalDate newEnd){
+        this.endDate = newEnd;
+    }
+
+
     public String toString(){
         return String.format("Release #%-3d | %-10s | %s to %s",
                 id, releaseWindow, startDate, endDate);

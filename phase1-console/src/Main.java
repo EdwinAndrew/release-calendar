@@ -25,6 +25,17 @@ public class Main {
         System.out.println(prodDeploy);
 
 
+        ReleaseManager releaseManager = new ReleaseManager();
+
+        releaseManager.addRelease(release);
+        releaseManager.addRelease(release2);
+        System.out.println(releaseManager.getAllReleases());
+        releaseManager.updateRelease(1,"R25.1.0", LocalDate.now().plusDays(1), LocalDate.now().plusDays(2));
+        System.out.println(releaseManager.getAllReleases());
+
+
+
+
 
     }
 }
