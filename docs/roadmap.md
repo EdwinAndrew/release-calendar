@@ -44,17 +44,17 @@
 ---
 
 ### Milestone 1.3: Console Application 
-**Status:** 🚧In Progress
+**Status:** ✅ Complete
 
 **Goal:** Build a text-based user interface
 
 **Tasks:**
-- [ ] Create `UserInterface` class with Scanner for input
-- [ ] Build menu system with options (Add Release, View Releases, Add Milestone, etc.)
-- [ ] Implement all CRUD operations through the menu
-- [ ] Display releases and milestones in formatted text
-- [ ] Calculate and display days until next milestone
-- [ ] Add input validation and error messages
+- [x] Create `UserInterface` class with Scanner for input
+- [x] Build menu system with options (Add Release, View Releases, Add Milestone, etc.)
+- [x] Implement all CRUD operations through the menu
+- [x] Display releases and milestones in formatted text
+- [x] Calculate and display days until next milestone
+- [x] Add input validation and error messages
 
 **Skills Practiced:** Scanner input, control flow, method organization, user interaction
 
@@ -66,7 +66,7 @@
 **Focus: Transition to web framework**
 
 ### Milestone 2.1: Spring Boot Setup 
-**Status:** 🔲 Not Started
+**Status:** 🚧 In Progress
 
 **Goal:** Set up Spring Boot project structure
 
