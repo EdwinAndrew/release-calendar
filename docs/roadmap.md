@@ -86,7 +86,7 @@
 ---
 
 ### Milestone 2.2: REST API - First Endpoints 
-**Status:** 🚧 In Progress
+**Status:** ✅ Complete 
 
 **Goal:** Create REST endpoints for releases
 
@@ -110,7 +110,7 @@
 ---
 
 ### Milestone 2.3: Milestone Endpoints 
-**Status:** 🔲 Not Started
+**Status:** ✅ Complete 
 
 **Goal:** Add REST endpoints for milestones
 
@@ -132,7 +132,7 @@
 **Focus: Persistent storage with JPA**
 
 ### Milestone 3.1: Database Setup
-**Status:** 🔲 Not Started
+**Status:**  🚧 In Progress
 
 **Goal:** Add database persistence
 
@@ -555,14 +555,14 @@
 
 | Phase | Status | Start Date | Completion Date |
 |-------|--------|------------|-----------------|
-| Phase 1 | 🚧 In Progress | 2025-10-01 | |
-| Phase 2 | 🔲 Not Started | | |
-| Phase 3 | 🔲 Not Started | | |
-| Phase 4 | 🔲 Not Started | | |
-| Phase 5 | 🔲 Not Started | | |
-| Phase 6 | 🔲 Not Started | | |
-| Phase 7 | 🔲 Not Started | | |
-| Phase 8 | 🔲 Not Started | | |
+| Phase 1 | ✅ Complete | 2025-10-01 | 2025-10-04|
+| Phase 2 | ✅ Complete | 2025-10-04 | 2025-10-05      |
+| Phase 3 | 🚧 In Progress | 2025-10-05 |                 |
+| Phase 4 | 🔲 Not Started |            |                 |
+| Phase 5 | 🔲 Not Started |            |                 |
+| Phase 6 | 🔲 Not Started |            |                 |
+| Phase 7 | 🔲 Not Started |            |                 |
+| Phase 8 | 🔲 Not Started |            |                 |
 
 **Status Legend:**
 - 🔲 Not Started
