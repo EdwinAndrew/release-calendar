@@ -91,17 +91,17 @@
 **Goal:** Create REST endpoints for releases
 
 **Tasks:**
-- [ ] Create `ReleaseController` class with @RestController annotation
-- [ ] Refactor Phase 1 Release class for use with Spring
-- [ ] Implement endpoints:
+- [x] Create `ReleaseController` class with @RestController annotation
+- [x] Refactor Phase 1 Release class for use with Spring
+- [x] Implement endpoints:
     - `GET /api/releases` - list all releases
     - `GET /api/releases/{id}` - get single release
     - `POST /api/releases` - create new release
     - `PUT /api/releases/{id}` - update release
     - `DELETE /api/releases/{id}` - delete release
-- [ ] Use in-memory ArrayList for storage (from Phase 1)
-- [ ] Test with Postman or browser
-- [ ] Return proper HTTP status codes (200, 201, 404, etc.)
+- [x] Use in-memory ArrayList for storage (from Phase 1)
+- [x] Test with Postman or browser
+- [x] Return proper HTTP status codes (200, 201, 404, etc.)
 
 **Skills Learned:** REST principles, HTTP methods, JSON, Spring annotations
 
@@ -115,10 +115,10 @@
 **Goal:** Add REST endpoints for milestones
 
 **Tasks:**
-- [ ] Create `MilestoneController` class
-- [ ] Implement full CRUD endpoints for milestones
-- [ ] Add endpoint to get all milestones for a specific release
-- [ ] Link milestones to releases via releaseId
+- [x] Create `MilestoneController` class
+- [x] Implement full CRUD endpoints for milestones
+- [x] Add endpoint to get all milestones for a specific release
+- [x] Link milestones to releases via releaseId
 - [ ] Handle relationships and cascading operations
 - [ ] Add request/response validation
 
