@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.edwin</groupId>
-	<artifactId>release-calendar</artifactId>
+	<artifactId>releasecalendar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>release-calendar</name>
+	<name>releasecalendar</name>
 	<description>Release Calendar Web App</description>
 	<url/>
 	<licenses>

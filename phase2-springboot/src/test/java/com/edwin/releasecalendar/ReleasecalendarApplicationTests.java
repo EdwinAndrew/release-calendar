@@ -1,10 +1,10 @@
-package test.java.com.edwin.release_calendar;
+package com.edwin.releasecalendar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReleaseCalendarApplicationTests {
+class ReleasecalendarApplicationTests {
 
 	@Test
 	void contextLoads() {

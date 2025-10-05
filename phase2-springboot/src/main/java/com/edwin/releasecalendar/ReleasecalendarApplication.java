@@ -1,13 +1,13 @@
-package main.java.com.edwin.release_calendar;
+package com.edwin.releasecalendar;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReleaseCalendarApplication {
+public class ReleasecalendarApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReleaseCalendarApplication.class, args);
+		SpringApplication.run(ReleasecalendarApplication.class, args);
 	}
 
 }
