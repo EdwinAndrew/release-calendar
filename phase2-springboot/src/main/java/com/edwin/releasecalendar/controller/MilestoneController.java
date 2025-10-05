@@ -1,7 +1,11 @@
 package com.edwin.releasecalendar.controller;
 
 import com.edwin.releasecalendar.manager.MilestoneManager;
+import com.edwin.releasecalendar.manager.ReleaseManager;
 import com.edwin.releasecalendar.model.Milestone;
+import com.edwin.releasecalendar.model.Release;
+import org.apache.coyote.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -11,9 +15,11 @@ import java.util.ArrayList;
 @RequestMapping("/api/milestones")
 public class MilestoneController {
     private final MilestoneManager milestoneManager;
+    private final ReleaseManager releaseManager;
     
-    public MilestoneController(MilestoneManager milestoneManager){
+    public MilestoneController(MilestoneManager milestoneManager, ReleaseManager releaseManager){
         this.milestoneManager = milestoneManager;
+        this.releaseManager = releaseManager;
     }
     
     @GetMapping()
@@ -22,34 +28,65 @@ public class MilestoneController {
     }
 
     @GetMapping("/{releaseId}")
-    public ArrayList<Milestone> getMilestoneByReleaseId(@PathVariable("releaseId") int id){
-        return milestoneManager.getMilestonesByRelease(id);
+    public ResponseEntity <ArrayList<Milestone>> getMilestoneByReleaseId(@PathVariable("releaseId") int id){
+        Release r = releaseManager.getRelease(id);
+        if (r == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(milestoneManager.getMilestonesByRelease(id));
+
     }
 
     @PostMapping()
-    public void createNewMilestone(@RequestBody Milestone milestone){
+    public ResponseEntity<Void> createNewMilestone(@RequestBody Milestone milestone){
+        Release r = releaseManager.getRelease(milestone.getReleaseId());
+        if (r == null){
+            return ResponseEntity.badRequest().build();
+        }
         milestoneManager.addMilestone(milestone);
+        return ResponseEntity.status(201).build();
     }
 
     @PutMapping("/{id}/date")
-    public void updateMilestoneDate(@PathVariable("id") int id, @RequestBody LocalDate newDate){
+    public ResponseEntity<Void> updateMilestoneDate(@PathVariable("id") int id, @RequestBody LocalDate newDate){
+        Milestone m = milestoneManager.getMilestone(id);
+        if (m == null){
+            return ResponseEntity.notFound().build();
+        }
         milestoneManager.updateMilestoneDate(id, newDate);
+        return ResponseEntity.noContent().build();
+
     }
 
     @PutMapping("/{id}/name")
-    public void updateMilestoneName(@PathVariable("id") int id, @RequestBody String newName){
+    public ResponseEntity<Void> updateMilestoneName(@PathVariable("id") int id, @RequestBody String newName){
+        Milestone m = milestoneManager.getMilestone(id);
+        if (m == null){
+            return ResponseEntity.notFound().build();
+        }
         milestoneManager.updateMilestoneName(id, newName);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
-    public void updateMilestone(@PathVariable("id") int id, @RequestBody Milestone updatedMilestone){
+    public ResponseEntity<Void> updateMilestone(@PathVariable("id") int id, @RequestBody Milestone updatedMilestone){
+        Milestone m = milestoneManager.getMilestone(id);
+        if (m == null){
+            return ResponseEntity.notFound().build();
+        }
         milestoneManager.updateMilestoneDate(id, updatedMilestone.getKeyDate());
         milestoneManager.updateMilestoneName(id, updatedMilestone.getMilestoneName());
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMilestoneById(@PathVariable("id") int milestoneId){
+    public ResponseEntity<Void> deleteMilestoneById(@PathVariable("id") int milestoneId){
+        Milestone m = milestoneManager.getMilestone(milestoneId);
+        if (m == null){
+            return ResponseEntity.notFound().build();
+        }
         milestoneManager.deleteMilestone(milestoneId);
+        return ResponseEntity.noContent().build();
     }
 
 }

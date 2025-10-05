@@ -119,8 +119,8 @@
 - [x] Implement full CRUD endpoints for milestones
 - [x] Add endpoint to get all milestones for a specific release
 - [x] Link milestones to releases via releaseId
-- [ ] Handle relationships and cascading operations
-- [ ] Add request/response validation
+- [x] Handle relationships and cascading operations
+- [x] Add request/response validation
 
 **Skills Learned:** @PathVariable, @RequestBody, ResponseEntity, REST relationships
 
