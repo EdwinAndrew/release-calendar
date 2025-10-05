@@ -66,18 +66,18 @@
 **Focus: Transition to web framework**
 
 ### Milestone 2.1: Spring Boot Setup 
-**Status:** 🚧 In Progress
+**Status:** ✅ Complete 
 
 **Goal:** Set up Spring Boot project structure
 
 **Tasks:**
-- [ ] Install Java Development Kit (JDK 17+)
-- [ ] Install Maven or Gradle
-- [ ] Use Spring Initializr to create project
-- [ ] Add dependencies: Spring Web, Spring Boot DevTools
-- [ ] Create basic project structure following Maven conventions
-- [ ] Run "Hello World" REST endpoint to verify setup
-- [ ] Configure application.properties
+- [x] Install Java Development Kit (JDK 17+)
+- [x] Install Maven or Gradle
+- [x] Use Spring Initializr to create project
+- [x] Add dependencies: Spring Web, Spring Boot DevTools
+- [x] Create basic project structure following Maven conventions
+- [x] Run "Hello World" REST endpoint to verify setup
+- [x] Configure application.properties
 
 **Skills Learned:** Spring Boot basics, project structure, Maven/Gradle, REST fundamentals
 
@@ -86,7 +86,7 @@
 ---
 
 ### Milestone 2.2: REST API - First Endpoints 
-**Status:** 🔲 Not Started
+**Status:** 🚧 In Progress
 
 **Goal:** Create REST endpoints for releases
 
