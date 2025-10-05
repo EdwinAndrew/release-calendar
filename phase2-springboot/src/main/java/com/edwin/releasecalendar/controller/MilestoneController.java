@@ -28,7 +28,7 @@ public class MilestoneController {
     }
 
     @GetMapping("/{releaseId}")
-    public ResponseEntity <ArrayList<Milestone>> getMilestoneByReleaseId(@PathVariable("releaseId") int id){
+    public ResponseEntity <ArrayList<Milestone>> getMilestoneByReleaseId(@PathVariable("releaseId") Long id){
         Release r = releaseManager.getRelease(id);
         if (r == null){
             return ResponseEntity.notFound().build();
@@ -48,7 +48,7 @@ public class MilestoneController {
     }
 
     @PutMapping("/{id}/date")
-    public ResponseEntity<Void> updateMilestoneDate(@PathVariable("id") int id, @RequestBody LocalDate newDate){
+    public ResponseEntity<Void> updateMilestoneDate(@PathVariable("id") Long id, @RequestBody LocalDate newDate){
         Milestone m = milestoneManager.getMilestone(id);
         if (m == null){
             return ResponseEntity.notFound().build();
@@ -59,7 +59,7 @@ public class MilestoneController {
     }
 
     @PutMapping("/{id}/name")
-    public ResponseEntity<Void> updateMilestoneName(@PathVariable("id") int id, @RequestBody String newName){
+    public ResponseEntity<Void> updateMilestoneName(@PathVariable("id") Long id, @RequestBody String newName){
         Milestone m = milestoneManager.getMilestone(id);
         if (m == null){
             return ResponseEntity.notFound().build();
@@ -69,7 +69,7 @@ public class MilestoneController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateMilestone(@PathVariable("id") int id, @RequestBody Milestone updatedMilestone){
+    public ResponseEntity<Void> updateMilestone(@PathVariable("id") Long id, @RequestBody Milestone updatedMilestone){
         Milestone m = milestoneManager.getMilestone(id);
         if (m == null){
             return ResponseEntity.notFound().build();
@@ -80,7 +80,7 @@ public class MilestoneController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMilestoneById(@PathVariable("id") int milestoneId){
+    public ResponseEntity<Void> deleteMilestoneById(@PathVariable("id") Long milestoneId){
         Milestone m = milestoneManager.getMilestone(milestoneId);
         if (m == null){
             return ResponseEntity.notFound().build();

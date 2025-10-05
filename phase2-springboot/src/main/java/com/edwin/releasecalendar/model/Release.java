@@ -1,19 +1,28 @@
 package com.edwin.releasecalendar.model;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name="releases")
 @JsonPropertyOrder({"id", "releaseWindow", "startDate", "endDate"})
 public class Release {
 
-
-    private static int nextId = 1;
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false, length = 100)
     private String releaseWindow;
+    @Column(nullable = false)
     private LocalDate startDate;
+    @Column(nullable = false)
     private LocalDate endDate;
 
+    protected Release(){
+
+    }
 
     public Release(String releaseWindow, LocalDate startDate, LocalDate endDate){
         // Validate inputs before assignment
@@ -33,13 +42,12 @@ public class Release {
             throw new IllegalArgumentException("Start date must be before or equal to end date!");
         }
 
-        this.id = nextId++;
         this.releaseWindow = releaseWindow;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public int getId(){
+    public Long getId(){
         return id;
     }
 

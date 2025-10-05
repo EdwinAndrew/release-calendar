@@ -28,7 +28,7 @@ public class ReleaseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Release> getSingleReleaseById(@PathVariable("id") int releaseId){
+    public ResponseEntity<Release> getSingleReleaseById(@PathVariable("id") Long releaseId){
         Release release = releaseManager.getRelease(releaseId);
         if (release == null){
             return ResponseEntity.notFound().build();
@@ -42,7 +42,7 @@ public class ReleaseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateReleaseById(@PathVariable("id") int id, @RequestBody Release updatedRelease){
+    public ResponseEntity<Void> updateReleaseById(@PathVariable("id") Long id, @RequestBody Release updatedRelease){
         if (releaseManager.getRelease(id) == null){
              return ResponseEntity.badRequest().build();
         }
@@ -54,7 +54,7 @@ public class ReleaseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRelease(@PathVariable("id") int releaseId){
+    public ResponseEntity<Void> deleteRelease(@PathVariable("id") Long releaseId){
         Release release = releaseManager.getRelease(releaseId);
         if (release == null){
             return ResponseEntity.notFound().build();

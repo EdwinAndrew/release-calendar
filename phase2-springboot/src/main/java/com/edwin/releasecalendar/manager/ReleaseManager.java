@@ -19,7 +19,7 @@ public class ReleaseManager {
         releases.add(r);
     }
 
-    public Release getRelease(int id){
+    public Release getRelease(Long id){
         for (Release release: releases){
             if (release.getId() == id){
                 return release;
@@ -32,7 +32,7 @@ public class ReleaseManager {
         return releases;
     }
 
-    public void updateRelease(int id, String newName, LocalDate newStart, LocalDate newEnd){
+    public void updateRelease(Long id, String newName, LocalDate newStart, LocalDate newEnd){
         Release targetRelease =  getRelease(id);
         if (targetRelease != null){
             targetRelease.setReleaseWindow(newName);
@@ -44,7 +44,7 @@ public class ReleaseManager {
 
     }
 
-    public void deleteRelease(int id){
+    public void deleteRelease(Long id){
         Release targetRelease = getRelease(id);
         if (targetRelease != null){
             releases.remove(targetRelease);

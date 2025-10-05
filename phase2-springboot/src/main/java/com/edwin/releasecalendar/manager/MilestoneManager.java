@@ -28,7 +28,7 @@ public class MilestoneManager {
         return milestoneList;
     }
 
-    public Milestone getMilestone(int id){
+    public Milestone getMilestone(Long id){
         for (Milestone milestone: milestoneList){
             if (milestone.getId() == id){
                 return milestone;
@@ -37,7 +37,7 @@ public class MilestoneManager {
         return null;
     }
 
-    public ArrayList<Milestone> getMilestonesByRelease(int releaseId){
+    public ArrayList<Milestone> getMilestonesByRelease(Long releaseId){
         ArrayList<Milestone> result = new ArrayList<>();
         for (Milestone milestone: milestoneList){
             if (milestone.getReleaseId() == releaseId){
@@ -47,7 +47,7 @@ public class MilestoneManager {
         return result;
     }
 
-    public void updateMilestoneDate(int id, LocalDate newDate){
+    public void updateMilestoneDate(Long id, LocalDate newDate){
         Milestone target = getMilestone(id);
         if (target != null) {
             target.updateKeyDate(newDate);
@@ -57,7 +57,7 @@ public class MilestoneManager {
         }
     }
 
-    public void updateMilestoneName(int id, String newName){
+    public void updateMilestoneName(Long id, String newName){
         Milestone target = getMilestone(id);
         if (target != null) {
             target.updateMilestoneName(newName);
@@ -67,7 +67,7 @@ public class MilestoneManager {
         }
     }
 
-    public void deleteMilestone(int id){
+    public void deleteMilestone(Long id){
         Milestone target = getMilestone(id);
 
         if (target != null){

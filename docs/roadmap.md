@@ -132,17 +132,17 @@
 **Focus: Persistent storage with JPA**
 
 ### Milestone 3.1: Database Setup
-**Status:**  🚧 In Progress
+**Status:** ✅ Complete 
 
 **Goal:** Add database persistence
 
 **Tasks:**
-- [ ] Add dependencies: Spring Data JPA, H2 Database
-- [ ] Configure application.properties for database connection
-- [ ] Convert Release to JPA entity (@Entity, @Id, @GeneratedValue)
-- [ ] Convert Milestone to JPA entity
-- [ ] Add @Column annotations and constraints
-- [ ] Test database creation and connection
+- [x] Add dependencies: Spring Data JPA, H2 Database
+- [x] Configure application.properties for database connection
+- [x] Convert Release to JPA entity (@Entity, @Id, @GeneratedValue)
+- [x] Convert Milestone to JPA entity
+- [x] Add @Column annotations and constraints
+- [x] Test database creation and connection
 
 **Skills Learned:** JPA/Hibernate, entity mapping, database configuration
 
@@ -151,7 +151,7 @@
 ---
 
 ### Milestone 3.2: Repositories 
-**Status:** 🔲 Not Started
+**Status:** 🚧 In Progress
 
 **Goal:** Replace in-memory storage with database repositories
 
