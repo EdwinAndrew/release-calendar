@@ -151,16 +151,16 @@
 ---
 
 ### Milestone 3.2: Repositories 
-**Status:** 🚧 In Progress
+**Status:** ✅ Complete
 
 **Goal:** Replace in-memory storage with database repositories
 
 **Tasks:**
-- [ ] Create `ReleaseRepository` interface extending JpaRepository<Release, Long>
-- [ ] Create `MilestoneRepository` interface
-- [ ] Remove ArrayList storage from controllers
-- [ ] Use repositories for all CRUD operations
-- [ ] Add custom query methods (findByName, findByDateBetween, etc.)
+- [x] Create `ReleaseRepository` interface extending JpaRepository<Release, Long>
+- [x] Create `MilestoneRepository` interface
+- [x] Remove ArrayList storage from controllers
+- [x] Use repositories for all CRUD operations
+- [x] Add custom query methods (findByName, findByDateBetween, etc.)
 
 **Skills Learned:** Spring Data JPA, repository pattern, custom queries
 
@@ -169,7 +169,7 @@
 ---
 
 ### Milestone 3.3: Service Layer
-**Status:** 🔲 Not Started
+**Status:**  🚧 In Progress
 
 **Goal:** Add proper layering and business logic
 
