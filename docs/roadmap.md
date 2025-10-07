@@ -169,17 +169,17 @@
 ---
 
 ### Milestone 3.3: Service Layer
-**Status:**  🚧 In Progress
+**Status:**  ✅ Complete
 
 **Goal:** Add proper layering and business logic
 
 **Tasks:**
-- [ ] Create `ReleaseService` class with @Service annotation
-- [ ] Create `MilestoneService` class
-- [ ] Move business logic from controllers to services
-- [ ] Add validation logic (date checks, duplicate prevention)
-- [ ] Implement proper error handling
-- [ ] Controllers now call services, services call repositories
+- [X] Create `ReleaseService` class with @Service annotation
+- [X] Create `MilestoneService` class
+- [X] Move business logic from controllers to services
+- [X] Add validation logic (date checks, duplicate prevention)
+- [X] Implement proper error handling
+- [X] Controllers now call services, services call repositories
 
 **Skills Learned:** Separation of concerns, service layer pattern, business logic
 
@@ -188,17 +188,17 @@
 ---
 
 ### Milestone 3.4: Relationships
-**Status:** 🔲 Not Started
+**Status:** ✅ Complete
 
 **Goal:** Implement JPA relationships
 
 **Tasks:**
-- [ ] Add @OneToMany relationship: Release → Milestones
-- [ ] Add @ManyToOne relationship: Milestone → Release
-- [ ] Configure cascade operations (CascadeType.ALL)
-- [ ] Add fetch types (LAZY vs EAGER)
-- [ ] Query milestones by release
-- [ ] Handle orphan removal
+- [x] Add @OneToMany relationship: Release → Milestones
+- [x] Add @ManyToOne relationship: Milestone → Release
+- [x] Configure cascade operations (CascadeType.ALL)
+- [x] Add fetch types (LAZY vs EAGER)
+- [x] Query milestones by release
+- [x] Handle orphan removal
 
 **Skills Learned:** JPA relationships, @OneToMany, @ManyToOne, cascading
 
@@ -210,7 +210,7 @@
 **Focus: Server-side rendering with Thymeleaf**
 
 ### Milestone 4.1: Thymeleaf Setup
-**Status:** 🔲 Not Started
+**Status:** 🔲 🚧 In Progress
 
 **Goal:** Add web page rendering
 

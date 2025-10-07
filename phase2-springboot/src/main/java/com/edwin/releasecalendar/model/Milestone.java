@@ -1,5 +1,6 @@
 package com.edwin.releasecalendar.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -13,8 +14,10 @@ public class Milestone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long releaseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "release_id")
+    @JsonIgnore
+    private Release release;
 
     @Column(nullable = false, length = 200)
     private String milestoneName;
@@ -22,18 +25,18 @@ public class Milestone {
     @Column(nullable = false)
     private LocalDate keyDate;
 
-    // Default constructor (required by JPA)
+
     protected Milestone() {
     }
 
-    // Parameterized constructor
-    public Milestone(Long releaseId, String milestoneName, LocalDate keyDate) {
-        this.releaseId = releaseId;
+
+    public Milestone(Release release, String milestoneName, LocalDate keyDate) {
+        this.release = release;
         this.keyDate = keyDate;
         this.milestoneName = milestoneName;
     }
 
-    // Getters
+
     public Long getId() {
         return id;
     }
@@ -47,10 +50,14 @@ public class Milestone {
     }
 
     public Long getReleaseId() {
-        return releaseId;
+        return release != null ? release.getId() : null;
     }
 
-    // Update methods
+    public Release getRelease(){
+        return release;
+    }
+
+
     public void updateKeyDate(LocalDate newDate) {
         this.keyDate = newDate;
     }
@@ -62,6 +69,6 @@ public class Milestone {
     @Override
     public String toString() {
         return String.format("%-5s | %-30s | %s | Release: %d",
-                "#" + id, milestoneName, keyDate, releaseId);
+                "#" + id, milestoneName, keyDate, getReleaseId());
     }
 }

@@ -1,74 +1,71 @@
 package com.edwin.releasecalendar.controller;
 
+import com.edwin.releasecalendar.dto.MilestoneRequest;
 import com.edwin.releasecalendar.model.Milestone;
-import com.edwin.releasecalendar.model.Release;
-import com.edwin.releasecalendar.repository.MilestoneRepository;
-import com.edwin.releasecalendar.repository.ReleaseRepository;
+import com.edwin.releasecalendar.service.MilestoneService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/milestones")
 public class MilestoneController {
 
-    private final MilestoneRepository milestoneRepository;
-    private final ReleaseRepository releaseRepository;
+    private final MilestoneService milestoneService;
 
-    public MilestoneController(MilestoneRepository milestoneRepository, ReleaseRepository releaseRepository){
-        this.milestoneRepository = milestoneRepository;
-        this.releaseRepository = releaseRepository;
+    public MilestoneController(MilestoneService milestoneService){
+        this.milestoneService = milestoneService;
     }
     
     @GetMapping()
     public List<Milestone> getAllMilestones(){
-        return milestoneRepository.findAll();
+        return milestoneService.getAllMilestones();
     }
 
     @GetMapping("/release/{releaseId}")
     public ResponseEntity <List<Milestone>> getMilestoneByReleaseId(@PathVariable("releaseId") Long releaseId){
-        Optional<Release> r = releaseRepository.findById(releaseId);
-        if (r.isEmpty()){
+        try {
+            List<Milestone> milestoneList = milestoneService.getMilestonesByReleaseId(releaseId);
+            return ResponseEntity.ok().body(milestoneList);
+        } catch (RuntimeException e){
             return ResponseEntity.notFound().build();
         }
-        List<Milestone> milestoneList = milestoneRepository.findByReleaseId(releaseId);
-        return ResponseEntity.ok().body(milestoneList);
+
     }
 
     @PostMapping()
-    public ResponseEntity<Milestone> createNewMilestone(@RequestBody Milestone milestone){
-        Optional<Release> r = releaseRepository.findById(milestone.getReleaseId());
-        if (r.isEmpty()){
+    public ResponseEntity<Milestone> createNewMilestone(@RequestBody MilestoneRequest request) {
+        try {
+            Milestone newMilestone = milestoneService.createMilestone(request.getReleaseId(), request.getMilestoneName(), request.getKeyDate());
+            return ResponseEntity.status(201).body(newMilestone);
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().build();
         }
-        Milestone newMilestone = milestoneRepository.save(milestone);
-        return ResponseEntity.status(201).body(newMilestone);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Milestone> updateMilestone(@PathVariable("id") Long id, @RequestBody Milestone updatedMilestone){
-        Optional<Milestone> existingMilestone = milestoneRepository.findById(id);
-        if (existingMilestone.isEmpty()){
+    public ResponseEntity<Milestone> updateMilestone(@PathVariable("id") Long id, @RequestBody Milestone updatedMilestone) {
+        try {
+            Milestone saved = milestoneService.updateMilestone(id, updatedMilestone);
+            return ResponseEntity.ok(saved);
+        } catch (IllegalArgumentException e) {
+            // ✅ Validation error → 400
+            return ResponseEntity.badRequest().build();
+        } catch (RuntimeException e) {
+            // ✅ Not found → 404
             return ResponseEntity.notFound().build();
         }
-        Milestone milestone = existingMilestone.get();
-        milestone.updateMilestoneName(updatedMilestone.getMilestoneName());
-        milestone.updateKeyDate(updatedMilestone.getKeyDate());
-        Milestone saved = milestoneRepository.save(milestone);
-        return ResponseEntity.ok(saved);
-
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMilestoneById(@PathVariable("id") Long milestoneId){
-        Optional<Milestone> existingMilestone = milestoneRepository.findById(milestoneId);
-        if (existingMilestone.isEmpty()){
+        try{
+            milestoneService.deleteMilestone(milestoneId);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
-        milestoneRepository.deleteById(milestoneId);
-        return ResponseEntity.noContent().build();
     }
 
 }

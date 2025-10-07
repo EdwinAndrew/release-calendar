@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="releases")
@@ -19,6 +21,13 @@ public class Release {
     private LocalDate startDate;
     @Column(nullable = false)
     private LocalDate endDate;
+
+    @OneToMany(
+            mappedBy ="release",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Milestone> milestones = new ArrayList<>();
 
     protected Release(){
 
@@ -45,6 +54,10 @@ public class Release {
         this.releaseWindow = releaseWindow;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public List<Milestone> getMilestones(){
+        return milestones;
     }
 
     public Long getId(){
