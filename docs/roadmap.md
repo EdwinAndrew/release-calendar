@@ -132,17 +132,17 @@
 **Focus: Persistent storage with JPA**
 
 ### Milestone 3.1: Database Setup
-**Status:**  🚧 In Progress
+**Status:** ✅ Complete 
 
 **Goal:** Add database persistence
 
 **Tasks:**
-- [ ] Add dependencies: Spring Data JPA, H2 Database
-- [ ] Configure application.properties for database connection
-- [ ] Convert Release to JPA entity (@Entity, @Id, @GeneratedValue)
-- [ ] Convert Milestone to JPA entity
-- [ ] Add @Column annotations and constraints
-- [ ] Test database creation and connection
+- [x] Add dependencies: Spring Data JPA, H2 Database
+- [x] Configure application.properties for database connection
+- [x] Convert Release to JPA entity (@Entity, @Id, @GeneratedValue)
+- [x] Convert Milestone to JPA entity
+- [x] Add @Column annotations and constraints
+- [x] Test database creation and connection
 
 **Skills Learned:** JPA/Hibernate, entity mapping, database configuration
 
@@ -151,16 +151,16 @@
 ---
 
 ### Milestone 3.2: Repositories 
-**Status:** 🔲 Not Started
+**Status:** ✅ Complete
 
 **Goal:** Replace in-memory storage with database repositories
 
 **Tasks:**
-- [ ] Create `ReleaseRepository` interface extending JpaRepository<Release, Long>
-- [ ] Create `MilestoneRepository` interface
-- [ ] Remove ArrayList storage from controllers
-- [ ] Use repositories for all CRUD operations
-- [ ] Add custom query methods (findByName, findByDateBetween, etc.)
+- [x] Create `ReleaseRepository` interface extending JpaRepository<Release, Long>
+- [x] Create `MilestoneRepository` interface
+- [x] Remove ArrayList storage from controllers
+- [x] Use repositories for all CRUD operations
+- [x] Add custom query methods (findByName, findByDateBetween, etc.)
 
 **Skills Learned:** Spring Data JPA, repository pattern, custom queries
 
@@ -169,17 +169,17 @@
 ---
 
 ### Milestone 3.3: Service Layer
-**Status:** 🔲 Not Started
+**Status:**  ✅ Complete
 
 **Goal:** Add proper layering and business logic
 
 **Tasks:**
-- [ ] Create `ReleaseService` class with @Service annotation
-- [ ] Create `MilestoneService` class
-- [ ] Move business logic from controllers to services
-- [ ] Add validation logic (date checks, duplicate prevention)
-- [ ] Implement proper error handling
-- [ ] Controllers now call services, services call repositories
+- [X] Create `ReleaseService` class with @Service annotation
+- [X] Create `MilestoneService` class
+- [X] Move business logic from controllers to services
+- [X] Add validation logic (date checks, duplicate prevention)
+- [X] Implement proper error handling
+- [X] Controllers now call services, services call repositories
 
 **Skills Learned:** Separation of concerns, service layer pattern, business logic
 
@@ -188,17 +188,17 @@
 ---
 
 ### Milestone 3.4: Relationships
-**Status:** 🔲 Not Started
+**Status:** ✅ Complete
 
 **Goal:** Implement JPA relationships
 
 **Tasks:**
-- [ ] Add @OneToMany relationship: Release → Milestones
-- [ ] Add @ManyToOne relationship: Milestone → Release
-- [ ] Configure cascade operations (CascadeType.ALL)
-- [ ] Add fetch types (LAZY vs EAGER)
-- [ ] Query milestones by release
-- [ ] Handle orphan removal
+- [x] Add @OneToMany relationship: Release → Milestones
+- [x] Add @ManyToOne relationship: Milestone → Release
+- [x] Configure cascade operations (CascadeType.ALL)
+- [x] Add fetch types (LAZY vs EAGER)
+- [x] Query milestones by release
+- [x] Handle orphan removal
 
 **Skills Learned:** JPA relationships, @OneToMany, @ManyToOne, cascading
 
@@ -210,7 +210,7 @@
 **Focus: Server-side rendering with Thymeleaf**
 
 ### Milestone 4.1: Thymeleaf Setup
-**Status:** 🔲 Not Started
+**Status:** 🔲 🚧 In Progress
 
 **Goal:** Add web page rendering
 
@@ -555,9 +555,9 @@
 
 | Phase | Status | Start Date | Completion Date |
 |-------|--------|------------|-----------------|
-| Phase 1 | ✅ Complete | 2025-10-01 | 2025-10-04|
+| Phase 1 | ✅ Complete | 2025-10-01 | 2025-10-04      |
 | Phase 2 | ✅ Complete | 2025-10-04 | 2025-10-05      |
-| Phase 3 | 🚧 In Progress | 2025-10-05 |                 |
+| Phase 3 | 🚧 In Progress | 2025-10-05 | 2025-10-07      |
 | Phase 4 | 🔲 Not Started |            |                 |
 | Phase 5 | 🔲 Not Started |            |                 |
 | Phase 6 | 🔲 Not Started |            |                 |

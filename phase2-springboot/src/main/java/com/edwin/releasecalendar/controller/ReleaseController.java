@@ -1,74 +1,73 @@
 package com.edwin.releasecalendar.controller;
 
-import com.edwin.releasecalendar.manager.MilestoneManager;
-import com.edwin.releasecalendar.manager.ReleaseManager;
-import com.edwin.releasecalendar.model.Milestone;
 import com.edwin.releasecalendar.model.Release;
+import com.edwin.releasecalendar.service.ReleaseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/releases")
 public class ReleaseController {
 
-    private final ReleaseManager releaseManager;
-    private final MilestoneManager milestoneManager;
+    private final ReleaseService releaseService;
 
-    public ReleaseController(ReleaseManager releaseManager, MilestoneManager milestoneManager){
-        this.releaseManager = releaseManager;
-        this.milestoneManager = milestoneManager;
+    public ReleaseController(ReleaseService releaseService) {
+        this.releaseService = releaseService;
     }
 
     @GetMapping
-    public ArrayList<Release> getAllReleases(){
-        return releaseManager.getAllReleases();
+    public List<Release> getAllReleases() {
+        return releaseService.getAllReleases();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Release> getSingleReleaseById(@PathVariable("id") int releaseId){
-        Release release = releaseManager.getRelease(releaseId);
-        if (release == null){
+    public ResponseEntity<Release> getSingleReleaseById(@PathVariable("id") Long releaseId) {
+        Optional<Release> release = releaseService.getReleaseById(releaseId);
+
+        if (release.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(release);
+
+        return ResponseEntity.ok(release.get());
     }
 
     @PostMapping()
-    public void createRelease(@RequestBody Release newRelease){
-        releaseManager.addRelease(newRelease);
+    public ResponseEntity<Release> createRelease(@RequestBody Release newRelease) {
+        try {
+            Release savedRelease = releaseService.createRelease(newRelease);
+            return ResponseEntity.status(201).body(savedRelease);
+        } catch (IllegalArgumentException e) {
+            // Validation error from service
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateReleaseById(@PathVariable("id") int id, @RequestBody Release updatedRelease){
-        if (releaseManager.getRelease(id) == null){
-             return ResponseEntity.badRequest().build();
+    public ResponseEntity<Release> updateReleaseById(@PathVariable("id") Long id,
+                                                     @RequestBody Release updatedRelease) {
+        try {
+            Release saved = releaseService.updateRelease(id, updatedRelease);
+            return ResponseEntity.ok(saved);
+        } catch (IllegalArgumentException e) {
+            // ✅ Validation error → 400 Bad Request
+            return ResponseEntity.badRequest().build();
+        } catch (RuntimeException e) {
+            // ✅ Not found → 404 Not Found
+            return ResponseEntity.notFound().build();
         }
-        releaseManager.updateRelease(id,
-                                    updatedRelease.getReleaseWindow(),
-                                    updatedRelease.getStartDate(),
-                                    updatedRelease.getEndDate());
-        return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRelease(@PathVariable("id") int releaseId){
-        Release release = releaseManager.getRelease(releaseId);
-        if (release == null){
+    public ResponseEntity<Void> deleteRelease(@PathVariable("id") Long releaseId) {
+        try {
+            releaseService.deleteRelease(releaseId);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            // Release not found
             return ResponseEntity.notFound().build();
         }
-
-        ArrayList<Milestone> milestones = milestoneManager.getMilestonesByRelease(releaseId);
-        for (Milestone m: milestones){
-            milestoneManager.deleteMilestone(m.getId());
-        }
-        releaseManager.deleteRelease(releaseId);
-        return ResponseEntity.noContent().build();
     }
-
-
-
-
 }
