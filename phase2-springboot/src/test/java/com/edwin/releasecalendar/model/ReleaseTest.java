@@ -26,7 +26,8 @@ class ReleaseTest {
                 () -> assertEquals("R25.5.1", testRelease.getReleaseWindow()),  // ✅ Matches actual data
                 () -> assertEquals(LocalDate.of(2025, 10, 20), testRelease.getStartDate()),  // ✅ Correct date
                 () -> assertEquals(LocalDate.of(2025, 10, 21), testRelease.getEndDate()),  // ✅ Correct date
-                () -> assertNull(testRelease.getId())  // ✅ ID is null in unit tests (no database)
+                () -> assertNull(testRelease.getId()),
+                () -> assertEquals(ReleaseStatus.PLANNED, testRelease.getStatus())
         );
     }
 
@@ -40,6 +41,14 @@ class ReleaseTest {
                    LocalDate.of(2025, 10, 21));
        });
     }
+
+    @Test
+    @DisplayName("Should update status of release")
+    void shouldUpdateReleaseStatus(){
+        testRelease.setStatus(ReleaseStatus.AT_RISK);
+        assertEquals(ReleaseStatus.AT_RISK,testRelease.getStatus());
+    }
+
 
     @Test
     @DisplayName("Should throw exception when start date is after end date")

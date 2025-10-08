@@ -22,6 +22,10 @@ public class Release {
     @Column(nullable = false)
     private LocalDate endDate;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ReleaseStatus status = ReleaseStatus.PLANNED;
+
     @OneToMany(
             mappedBy ="release",
             fetch = FetchType.LAZY,
@@ -86,6 +90,14 @@ public class Release {
 
     public void setEndDate(LocalDate newEnd){
         this.endDate = newEnd;
+    }
+
+    public void setStatus(ReleaseStatus status){
+        this.status = status;
+    }
+
+    public ReleaseStatus getStatus(){
+        return status;
     }
 
 
