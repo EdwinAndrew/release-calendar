@@ -2,15 +2,15 @@
 
 **Project Goal:** Build a web-based release calendar to track software release milestones, with admin interface, Gantt chart visualization, and Slack notifications.
 
-**Learning Path:** Incremental development alongside MOOC.FI Java course, progressing from console app to production-ready Spring Boot application.
+**Learning Path:** Incremental development alongside MOOC.FI Java course, progressing from console app to production-ready Spring Boot + React application.
 
 ---
 
-## Phase 1: Java Fundamentals 
+## Phase 1: Java Fundamentals
 **Focus: Core Java concepts before Spring**
 
-### Milestone 1.1: Domain Models 
-**Status:** ✅ Complete
+### Milestone 1.1: Domain Models
+**Status:** ✅ Complete  
 **Goal:** Create the core business objects
 
 **Tasks:**
@@ -25,8 +25,8 @@
 
 ---
 
-### Milestone 1.2: Collections & Data Management 
-**Status:**  ✅ Complete 
+### Milestone 1.2: Collections & Data Management
+**Status:** ✅ Complete
 
 **Goal:** Manage collections of releases and milestones in memory
 
@@ -43,7 +43,7 @@
 
 ---
 
-### Milestone 1.3: Console Application 
+### Milestone 1.3: Console Application
 **Status:** ✅ Complete
 
 **Goal:** Build a text-based user interface
@@ -62,11 +62,11 @@
 
 ---
 
-## Phase 2: Spring Boot Basics 
+## Phase 2: Spring Boot Basics
 **Focus: Transition to web framework**
 
-### Milestone 2.1: Spring Boot Setup 
-**Status:** ✅ Complete 
+### Milestone 2.1: Spring Boot Setup
+**Status:** ✅ Complete
 
 **Goal:** Set up Spring Boot project structure
 
@@ -85,8 +85,8 @@
 
 ---
 
-### Milestone 2.2: REST API - First Endpoints 
-**Status:** ✅ Complete 
+### Milestone 2.2: REST API - First Endpoints
+**Status:** ✅ Complete
 
 **Goal:** Create REST endpoints for releases
 
@@ -109,8 +109,8 @@
 
 ---
 
-### Milestone 2.3: Milestone Endpoints 
-**Status:** ✅ Complete 
+### Milestone 2.3: Milestone Endpoints
+**Status:** ✅ Complete
 
 **Goal:** Add REST endpoints for milestones
 
@@ -128,11 +128,11 @@
 
 ---
 
-## Phase 3: Database Integration 
+## Phase 3: Database Integration
 **Focus: Persistent storage with JPA**
 
 ### Milestone 3.1: Database Setup
-**Status:** ✅ Complete 
+**Status:** ✅ Complete
 
 **Goal:** Add database persistence
 
@@ -150,7 +150,7 @@
 
 ---
 
-### Milestone 3.2: Repositories 
+### Milestone 3.2: Repositories
 **Status:** ✅ Complete
 
 **Goal:** Replace in-memory storage with database repositories
@@ -169,17 +169,17 @@
 ---
 
 ### Milestone 3.3: Service Layer
-**Status:**  ✅ Complete
+**Status:** ✅ Complete
 
 **Goal:** Add proper layering and business logic
 
 **Tasks:**
-- [X] Create `ReleaseService` class with @Service annotation
-- [X] Create `MilestoneService` class
-- [X] Move business logic from controllers to services
-- [X] Add validation logic (date checks, duplicate prevention)
-- [X] Implement proper error handling
-- [X] Controllers now call services, services call repositories
+- [x] Create `ReleaseService` class with @Service annotation
+- [x] Create `MilestoneService` class
+- [x] Move business logic from controllers to services
+- [x] Add validation logic (date checks, duplicate prevention)
+- [x] Implement proper error handling
+- [x] Controllers now call services, services call repositories
 
 **Skills Learned:** Separation of concerns, service layer pattern, business logic
 
@@ -199,139 +199,277 @@
 - [x] Add fetch types (LAZY vs EAGER)
 - [x] Query milestones by release
 - [x] Handle orphan removal
+- [x] Create MilestoneRequest DTO for API input
+- [x] Test bidirectional navigation and cascade delete
 
-**Skills Learned:** JPA relationships, @OneToMany, @ManyToOne, cascading
+**Skills Learned:** JPA relationships, @OneToMany, @ManyToOne, cascading, DTO pattern
 
 **Deliverable:** Full relational data model with proper associations
 
 ---
 
-## Phase 4: Web UI - Admin Interface 
-**Focus: Server-side rendering with Thymeleaf**
+## Phase 4: React Frontend - Admin Interface
+**Focus: Modern client-side UI with Material-UI**
 
-### Milestone 4.1: Thymeleaf Setup
-**Status:** 🔲 🚧 In Progress
+**Tech Stack:** React 18, Vite, Material-UI (MUI), Axios, React Router, Frappe Gantt
 
-**Goal:** Add web page rendering
+### Milestone 4.1: Project Setup & Configuration
+**Status:** 🔲 Not Started  
+**Goal:** Set up React development environment and connect to backend
 
 **Tasks:**
-- [ ] Add Spring Boot Starter Thymeleaf dependency
-- [ ] Create `WebController` for page routing
-- [ ] Create base template with header/footer
-- [ ] Build homepage: list all releases in HTML table
-- [ ] Add Bootstrap CSS for styling
-- [ ] Test page rendering
+- [x] Create React app using Vite: `npm create vite@latest release-calendar-frontend -- --template react`
+- [x] Install core dependencies:
+    - [x] Material-UI: `npm install @mui/material @emotion/react @emotion/styled`
+    - [x] Material-UI Icons: `npm install @mui/icons-material`
+    - [x] React Router: `npm install react-router-dom`
+    - [x] Axios: `npm install axios`
+    - [x] Date handling: `npm install date-fns`
+- [x] Set up project folder structure (components, pages, services)
+- [x] Configure CORS in Spring Boot backend:
+  ```java
+  @Configuration
+  public class CorsConfig {
+      @Bean
+      public WebMvcConfigurer corsConfigurer() {
+          return new WebMvcConfigurer() {
+              @Override
+              public void addCorsMappings(CorsRegistry registry) {
+                  registry.addMapping("/api/**")
+                      .allowedOrigins("http://localhost:5173")
+                      .allowedMethods("GET", "POST", "PUT", "DELETE");
+              }
+          };
+      }
+  }
+  ```
+- [x] Create Axios instance with base URL configuration
+- [x] Test basic API connection (fetch all releases)
+- [ ] Set up MUI theme provider with custom colors
 
-**Skills Learned:** Thymeleaf basics, template engine, th:each, th:text
+**Skills Learned:** Vite setup, npm/package management, project structure, CORS configuration
 
-**Deliverable:** Homepage displaying releases
+**Deliverable:** Running React app that successfully calls backend API
 
 ---
 
-### Milestone 4.2: Release Management Pages 
-**Status:** 🔲 Not Started
-
-**Goal:** Full CRUD web interface for releases
+### Milestone 4.2: Core Layout & Navigation
+**Status:** 🔲 Not Started  
+**Goal:** Build app shell with navigation
 
 **Tasks:**
-- [ ] Create "Add Release" form page
-- [ ] Create "Edit Release" form page
-- [ ] Create "View Release Details" page
-- [ ] Handle form submission with POST
-- [ ] Add date pickers for date fields
-- [ ] Add validation feedback on forms
-- [ ] Implement delete confirmation
+- [ ] Create main App.jsx with Router setup
+- [ ] Build responsive AppBar/Navbar component with MUI
+    - [ ] Logo/title
+    - [ ] Navigation links (Releases, Milestones, Gantt Chart)
+    - [ ] Mobile-responsive drawer menu
+- [ ] Create Dashboard/Home page layout
+- [ ] Set up React Router routes:
+    - [ ] `/` - Dashboard
+    - [ ] `/releases` - All Releases
+    - [ ] `/releases/:id` - Release Details
+    - [ ] `/releases/new` - Create Release
+    - [ ] `/releases/:id/edit` - Edit Release
+    - [ ] `/milestones` - All Milestones
+- [ ] Add MUI Container for consistent page layout
+- [ ] Style with MUI theme colors
 
-**Skills Learned:** Thymeleaf forms, th:object, th:field, form handling
+**Skills Learned:** React Router, MUI AppBar/Drawer, responsive design, component composition
 
-**Deliverable:** Complete web interface for managing releases
+**Deliverable:** Navigable app shell with working routes
 
 ---
 
-### Milestone 4.3: Milestone Management 
-**Status:** 🔲 Not Started
-
-**Goal:** Web interface for milestones
+### Milestone 4.3: Releases - Read & Display
+**Status:** 🔲 Not Started  
+**Goal:** Display releases from backend
 
 **Tasks:**
-- [ ] Add milestone section to release detail page
-- [ ] Create form to add milestones to a release
-- [ ] Display milestones in table/card format
-- [ ] Add edit/delete buttons for each milestone
-- [ ] Create dropdown for milestone type selection
-- [ ] Color-code milestones by type
+- [ ] Create `releaseService.js` with API functions:
+    - [ ] `getAllReleases()`
+    - [ ] `getReleaseById(id)`
+- [ ] Build `ReleasesPage` component
+    - [ ] Fetch releases on component mount using `useEffect`
+    - [ ] Handle loading state with MUI Skeleton or CircularProgress
+    - [ ] Handle error state with MUI Alert
+- [ ] Create `ReleaseCard` component using MUI Card
+    - [ ] Display: releaseWindow, startDate, endDate
+    - [ ] Add action buttons (View, Edit, Delete)
+    - [ ] Use date-fns to format dates nicely
+- [ ] Display releases in MUI Grid layout (responsive cards)
+- [ ] Create `ReleaseDetailsPage` component
+    - [ ] Fetch single release by ID from URL parameter
+    - [ ] Display release info in MUI Paper/Card
+    - [ ] Show placeholder for milestones (will add in next milestone)
 
-**Skills Learned:** Nested forms, dynamic content, navigation
+**Skills Learned:** useState, useEffect, async/await, API calls, MUI Cards/Grid, loading states
 
-**Deliverable:** Full milestone management within release pages
+**Deliverable:** View all releases and single release details
 
 ---
 
-### Milestone 4.4: Validation & Error Handling 
-**Status:** 🔲 Not Started
-
-**Goal:** Robust validation and user feedback
+### Milestone 4.4: Releases - Create, Update, Delete
+**Status:** 🔲 Not Started  
+**Goal:** Full CRUD for releases
 
 **Tasks:**
-- [ ] Add Bean Validation annotations (@NotNull, @NotBlank, @Future)
-- [ ] Display validation errors on forms
-- [ ] Create custom validators for business rules
-- [ ] Add user-friendly error messages
-- [ ] Handle 404 and 500 errors with custom pages
-- [ ] Add success messages after operations
+- [ ] Add API functions to `releaseService.js`:
+    - [ ] `createRelease(releaseData)`
+    - [ ] `updateRelease(id, releaseData)`
+    - [ ] `deleteRelease(id)`
+- [ ] Create `ReleaseForm` component (reusable for Create/Edit)
+    - [ ] Use MUI TextField for releaseWindow
+    - [ ] Use MUI DatePicker for startDate and endDate
+    - [ ] Add form validation (required fields, date logic)
+    - [ ] Handle form submission
+    - [ ] Show success/error feedback with MUI Snackbar
+- [ ] Build `CreateReleasePage`
+    - [ ] Use ReleaseForm component
+    - [ ] Navigate to releases list after successful creation
+- [ ] Build `EditReleasePage`
+    - [ ] Fetch existing release data
+    - [ ] Pre-populate ReleaseForm with data
+    - [ ] Update on submit
+- [ ] Add delete functionality to ReleaseCard
+    - [ ] Show MUI Dialog for confirmation
+    - [ ] Call deleteRelease API
+    - [ ] Remove from list after successful delete
+    - [ ] Handle cascade delete of milestones
 
-**Skills Learned:** @Valid, BindingResult, custom validators, error pages
+**Skills Learned:** Forms in React, controlled components, validation, MUI Dialog, useNavigate
 
-**Deliverable:** Polished UI with comprehensive validation
+**Deliverable:** Complete release management (Create, Read, Update, Delete)
 
 ---
 
-## Phase 5: Calendar & Gantt View 
-**Focus: Visualization of timeline data**
-
-### Milestone 5.1: List View Enhancements 
-**Status:** 🔲 Not Started
-
-**Goal:** Improved calendar-style display
+### Milestone 4.5: Milestones - Full CRUD
+**Status:** 🔲 Not Started  
+**Goal:** Manage milestones within releases
 
 **Tasks:**
-- [ ] Create "All Releases" calendar view page
-- [ ] Sort releases by date (upcoming, current, completed)
-- [ ] Add status badges (upcoming, in progress, completed, overdue)
-- [ ] Implement date range filter
-- [ ] Add search/filter functionality
-- [ ] Color-code releases by status
+- [ ] Create `milestoneService.js` with API functions:
+    - [ ] `getAllMilestones()`
+    - [ ] `getMilestonesByReleaseId(releaseId)`
+    - [ ] `createMilestone(milestoneData)`
+    - [ ] `updateMilestone(id, milestoneData)`
+    - [ ] `deleteMilestone(id)`
+- [ ] Update `ReleaseDetailsPage` to show milestones
+    - [ ] Fetch milestones for the release
+    - [ ] Display in MUI List or Timeline component
+    - [ ] Add "New Milestone" button
+- [ ] Create `MilestoneCard` component
+    - [ ] Display: milestoneName, keyDate
+    - [ ] Edit and Delete buttons
+    - [ ] Calculate days until milestone
+- [ ] Create `MilestoneForm` component
+    - [ ] TextField for milestoneName
+    - [ ] DatePicker for keyDate
+    - [ ] Autocomplete dropdown to select release (for standalone create)
+    - [ ] Validation
+- [ ] Build `MilestonesPage` (view all milestones across releases)
+    - [ ] Display in MUI DataGrid or custom table
+    - [ ] Show release name with each milestone
+    - [ ] Filter by release dropdown
+- [ ] Add inline editing option for milestones
+    - [ ] Click to edit milestone in place
+    - [ ] Save/Cancel buttons
 
-**Skills Learned:** Sorting, filtering, conditional styling
+**Skills Learned:** Parent-child data relationships, MUI Autocomplete, inline editing, MUI DataGrid
 
-**Deliverable:** Enhanced list view with filtering
+**Deliverable:** Complete milestone management UI
 
 ---
 
-### Milestone 5.2: Gantt Chart Integration 
-**Status:** 🔲 Not Started
-
-**Goal:** Timeline visualization with Gantt chart
+### Milestone 4.6: Enhanced UX & Polish
+**Status:** 🔲 Not Started  
+**Goal:** Professional user experience
 
 **Tasks:**
-- [ ] Research and choose Gantt library (Chart.js, DHTMLX Gantt, or Frappe Gantt)
-- [ ] Create REST endpoint: `GET /api/gantt-data` returning formatted data
-- [ ] Build Gantt chart page
-- [ ] Display multiple releases on timeline
-- [ ] Show milestones as markers on timeline
-- [ ] Add interactivity (zoom, pan, tooltip on hover)
-- [ ] Make responsive for different screen sizes
+- [ ] Add search functionality to releases page
+    - [ ] MUI TextField with search icon
+    - [ ] Filter releases as user types
+- [ ] Add sorting options (by date, name)
+    - [ ] MUI Select dropdown or Table headers
+- [ ] Improve error handling
+    - [ ] Centralized error display with MUI Snackbar
+    - [ ] User-friendly error messages
+- [ ] Add empty states
+    - [ ] "No releases yet" with icon and "Create" button
+    - [ ] "No milestones" placeholder
+- [ ] Loading states for all async operations
+    - [ ] MUI LinearProgress at top of page
+    - [ ] Skeleton loaders for content
+- [ ] Success feedback for all actions
+    - [ ] "Release created successfully!" toast
+    - [ ] Green checkmark animations
+- [ ] Confirm dialogs for destructive actions
+    - [ ] MUI Dialog for delete operations
+    - [ ] Warn about cascade deletes
+- [ ] Make fully responsive
+    - [ ] Mobile-friendly card layouts
+    - [ ] Responsive navigation drawer
+    - [ ] Touch-friendly buttons
+- [ ] Add MUI theme customization
+    - [ ] Custom color palette
+    - [ ] Dark mode toggle (optional)
 
-**Skills Learned:** JavaScript integration, data formatting, charting libraries
+**Skills Learned:** UX best practices, MUI theming, responsive design, feedback patterns
 
-**Deliverable:** Interactive Gantt chart showing all releases and milestones
+**Deliverable:** Polished, professional-looking application
 
 ---
 
-## Phase 6: Security & User Management 
+### Milestone 4.7: Gantt Chart Integration
+**Status:** 🔲 Not Started  
+**Goal:** Visual timeline view using Frappe Gantt
+
+**Tasks:**
+- [ ] Install Frappe Gantt: `npm install frappe-gantt`
+- [ ] Create new route `/gantt` for Gantt chart page
+- [ ] Create `GanttChartPage` component
+- [ ] Format backend data for Frappe Gantt:
+    - [ ] Transform releases into Gantt tasks
+    - [ ] Transform milestones into task dependencies/markers
+    - [ ] Example format:
+      ```javascript
+      {
+        id: 'release-1',
+        name: 'R25.1.0',
+        start: '2025-10-01',
+        end: '2025-10-31',
+        progress: 50,
+        dependencies: '',
+        custom_class: 'release-bar'
+      }
+      ```
+- [ ] Initialize Frappe Gantt with data
+- [ ] Add view mode switcher (Day/Week/Month)
+- [ ] Style Gantt bars with release colors
+- [ ] Add milestone markers to timeline
+- [ ] Make Gantt responsive (may require custom CSS)
+- [ ] Integrate with Material-UI page layout
+- [ ] Add tooltips showing release/milestone details on hover
+- [ ] Optional: Make interactive (click to edit)
+
+**Skills Learned:** Third-party library integration, data transformation, SVG/canvas manipulation
+
+**Deliverable:** Interactive Gantt chart visualization
+
+**Note:** Frappe Gantt and Material-UI work well together. Frappe Gantt is framework-agnostic and can be rendered inside MUI Paper/Card components.
+
+---
+
+## Phase 5: ~~Calendar & Gantt View~~
+**Status:** ~~Replaced by Phase 4.7~~
+
+_This phase has been integrated into Phase 4.7 since the entire frontend is now built with React._
+
+---
+
+## Phase 6: Security & User Management
 **Focus: Authentication and authorization**
 
-### Milestone 6.1: Spring Security Setup 
+### Milestone 6.1: Spring Security Setup
 **Status:** 🔲 Not Started
 
 **Goal:** Add authentication
@@ -343,6 +481,7 @@
 - [ ] Create custom login page
 - [ ] Test with in-memory users
 - [ ] Protect admin routes
+- [ ] Configure CORS to allow authenticated requests from React
 
 **Skills Learned:** Spring Security basics, authentication, security configuration
 
@@ -350,7 +489,7 @@
 
 ---
 
-### Milestone 6.2: User Roles 
+### Milestone 6.2: User Roles
 **Status:** 🔲 Not Started
 
 **Goal:** Role-based access control
@@ -370,7 +509,7 @@
 
 ---
 
-### Milestone 6.3: Registration & User Management 
+### Milestone 6.3: Registration & User Management
 **Status:** 🔲 Not Started
 
 **Goal:** Complete user management system
@@ -382,14 +521,17 @@
 - [ ] Add password change functionality
 - [ ] Create user profile page
 - [ ] Add "created by" and "last modified by" audit fields
+- [ ] Update React frontend with login/logout UI
+- [ ] Store JWT tokens in React app
+- [ ] Add protected routes in React Router
 
-**Skills Learned:** Password security, BCrypt, user management patterns
+**Skills Learned:** Password security, BCrypt, user management patterns, JWT
 
 **Deliverable:** Secured application with complete user management
 
 ---
 
-## Phase 7: Notifications & Automation 
+## Phase 7: Notifications & Automation
 **Focus: Slack integration and scheduled tasks**
 
 ### Milestone 7.1: Slack Webhook Setup
@@ -411,7 +553,7 @@
 
 ---
 
-### Milestone 7.2: Notification Logic 
+### Milestone 7.2: Notification Logic
 **Status:** 🔲 Not Started
 
 **Goal:** Smart notification system
@@ -430,7 +572,7 @@
 
 ---
 
-### Milestone 7.3: Scheduled Notifications 
+### Milestone 7.3: Scheduled Notifications
 **Status:** 🔲 Not Started
 
 **Goal:** Automatic notifications
@@ -450,13 +592,13 @@
 
 ---
 
-### Milestone 7.4: Notification Management 
+### Milestone 7.4: Notification Management
 **Status:** 🔲 Not Started
 
 **Goal:** Configure notification preferences
 
 **Tasks:**
-- [ ] Create admin page for notification settings
+- [ ] Create admin page for notification settings (React UI)
 - [ ] Add enable/disable toggle per release
 - [ ] Add notification preference fields (channels, timing, recipients)
 - [ ] Create notification logs view with filtering
@@ -469,10 +611,10 @@
 
 ---
 
-## Phase 8: Polish & Production Ready 
+## Phase 8: Polish & Production Ready
 **Focus: Deployment and refinement**
 
-### Milestone 8.1: Switch to Production Database 
+### Milestone 8.1: Switch to Production Database
 **Status:** 🔲 Not Started
 
 **Goal:** Use production-grade database
@@ -492,7 +634,7 @@
 
 ---
 
-### Milestone 8.2: Error Handling & Logging 
+### Milestone 8.2: Error Handling & Logging
 **Status:** 🔲 Not Started
 
 **Goal:** Production-ready error handling
@@ -501,7 +643,7 @@
 - [ ] Create GlobalExceptionHandler with @ControllerAdvice
 - [ ] Add custom exception classes
 - [ ] Implement proper logging with SLF4J
-- [ ] Create user-friendly error pages (404, 500)
+- [ ] Create user-friendly error pages (404, 500) in React
 - [ ] Log important events (user actions, errors, notifications)
 - [ ] Configure log levels (dev vs production)
 
@@ -511,7 +653,7 @@
 
 ---
 
-### Milestone 8.3: Testing 
+### Milestone 8.3: Testing
 **Status:** 🔲 Not Started
 
 **Goal:** Comprehensive test coverage
@@ -522,30 +664,34 @@
 - [ ] Write controller tests with MockMvc
 - [ ] Add test coverage reporting
 - [ ] Aim for 70%+ code coverage
+- [ ] Write React component tests using React Testing Library
+- [ ] Write E2E tests with Playwright or Cypress
 - [ ] Document testing strategy
 
-**Skills Learned:** JUnit, Mockito, @SpringBootTest, MockMvc
+**Skills Learned:** JUnit, Mockito, @SpringBootTest, MockMvc, React Testing Library
 
 **Deliverable:** Well-tested application
 
 ---
 
-### Milestone 8.4: Deployment 
+### Milestone 8.4: Deployment
 **Status:** 🔲 Not Started
 
 **Goal:** Deploy to production
 
 **Tasks:**
-- [ ] Package application as executable JAR
-- [ ] Choose deployment platform (Heroku, Railway, AWS, DigitalOcean)
+- [ ] Package Spring Boot as executable JAR
+- [ ] Build React for production: `npm run build`
+- [ ] Choose deployment platform (Heroku, Railway, AWS, DigitalOcean, Vercel)
+- [ ] Deploy backend application
+- [ ] Deploy frontend application (or serve from Spring Boot)
 - [ ] Configure environment variables
 - [ ] Set up database on cloud provider
-- [ ] Deploy application
 - [ ] Configure domain name (optional)
 - [ ] Set up SSL certificate
 - [ ] Monitor application logs
 
-**Skills Learned:** Deployment, cloud platforms, environment configuration
+**Skills Learned:** Deployment, cloud platforms, environment configuration, CI/CD
 
 **Deliverable:** Live production application
 
@@ -555,21 +701,19 @@
 
 | Phase | Status | Start Date | Completion Date |
 |-------|--------|------------|-----------------|
-| Phase 1 | ✅ Complete | 2025-10-01 | 2025-10-04      |
-| Phase 2 | ✅ Complete | 2025-10-04 | 2025-10-05      |
-| Phase 3 | 🚧 In Progress | 2025-10-05 | 2025-10-07      |
-| Phase 4 | 🔲 Not Started |            |                 |
-| Phase 5 | 🔲 Not Started |            |                 |
-| Phase 6 | 🔲 Not Started |            |                 |
-| Phase 7 | 🔲 Not Started |            |                 |
-| Phase 8 | 🔲 Not Started |            |                 |
+| Phase 1 | ✅ Complete | 2025-10-01 | 2025-10-04 |
+| Phase 2 | ✅ Complete | 2025-10-04 | 2025-10-05 |
+| Phase 3 | ✅ Complete | 2025-10-05 | 2025-10-07 |
+| Phase 4 (React) | 🔲 Not Started | | |
+| Phase 5 | ~~Integrated into 4.7~~ | | |
+| Phase 6 | 🔲 Not Started | | |
+| Phase 7 | 🔲 Not Started | | |
+| Phase 8 | 🔲 Not Started | | |
 
 **Status Legend:**
 - 🔲 Not Started
 - 🚧 In Progress
 - ✅ Complete
-
----
 
 ## Learning Resources
 
@@ -577,21 +721,40 @@
 - MOOC.FI Java Programming course (mooc.fi)
 - Practice coding exercises daily
 
-### Phase 3-4: Spring Boot
+### Phase 3: Spring Boot & JPA
 - Spring Boot official guides (spring.io/guides)
 - Baeldung Spring tutorials (baeldung.com)
 - Spring Boot Tutorial by Amigoscode (YouTube)
 
-### Phase 5: Frontend
-- Thymeleaf documentation (thymeleaf.org)
-- Bootstrap documentation (getbootstrap.com)
-- Chart.js documentation (chartjs.org)
+### Phase 4: React & Frontend
+**React Fundamentals:**
+- React Official Tutorial (react.dev/learn) - **Start here!**
+- "React in 100 Seconds" by Fireship (YouTube)
+- freeCodeCamp React Course (YouTube)
+
+**Material-UI:**
+- MUI Official Documentation (mui.com)
+- MUI Templates for inspiration
+- Search: "MUI React CRUD example"
+
+**Frappe Gantt:**
+- GitHub Documentation (github.com/frappe/gantt)
+- CodePen examples for integration patterns
+
+**General:**
+- MDN Web Docs (HTML/CSS/JavaScript)
+- JavaScript.info for modern JS concepts
 
 ### Phase 6: Security
 - Spring Security official docs
 - Baeldung Spring Security tutorials
+- JWT authentication guides
 
 ### Phase 7-8: Advanced Topics
 - Spring Scheduling documentation
 - Slack API documentation (api.slack.com)
 - Testing with Spring Boot guides
+- React Testing Library docs
+- Deployment platform documentation
+
+---
